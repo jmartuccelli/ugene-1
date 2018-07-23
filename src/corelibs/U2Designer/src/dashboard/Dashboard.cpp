@@ -188,7 +188,7 @@ void Dashboard::sl_loaded(bool ok) {
 
 void Dashboard::sl_addProblemsWidget() {
     // Will be removed by parent
-    new ProblemsWidget(addWidget(tr("Problems"), OverviewDashTab), this);
+    new ProblemsWidget(addWidget(tr("Notifications"), OverviewDashTab), this);
 }
 
 void Dashboard::sl_serialize() {
