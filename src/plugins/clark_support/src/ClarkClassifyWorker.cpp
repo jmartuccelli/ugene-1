@@ -85,16 +85,16 @@ QString ClarkClassifyPrompter::composeRichDoc() {
 /* DatabaseValidator */
 /************************************************************************/
 
-bool ClarkClassifyValidator::validate(const Actor *actor, ProblemList &problemList, const QMap<QString, QString> &) const {
-    return validateDatabase(actor, problemList);
+bool ClarkClassifyValidator::validate(const Actor *actor, NotificationsList &notificationList, const QMap<QString, QString> &) const {
+    return validateDatabase(actor, notificationList);
 }
 
-bool ClarkClassifyValidator::validateDatabase(const Actor *actor, ProblemList &problemList) const {
+bool ClarkClassifyValidator::validateDatabase(const Actor *actor, NotificationsList &notificationList) const {
     const QString databaseUrl = actor->getParameter(ClarkClassifyWorkerFactory::DB_URL)->getAttributeValueWithoutScript<QString>();
     if (!databaseUrl.isEmpty()) {
         const bool doesDatabaseDirExist = QFileInfo(databaseUrl).exists();
         CHECK_EXT(doesDatabaseDirExist,
-                  problemList.append(Problem(ClarkClassifyPrompter::tr("The database folder doesn't exist: %1.").arg(databaseUrl), actor->getId())),
+                  notificationList.append(WorkflowNotification(ClarkClassifyPrompter::tr("The database folder doesn't exist: %1.").arg(databaseUrl), actor->getId())),
                   false);
 
         const QStringList files = QStringList() << "targets.txt" << ".custom.fileToAccssnTaxID" << ".custom.fileToTaxIDs";
@@ -108,7 +108,7 @@ bool ClarkClassifyValidator::validateDatabase(const Actor *actor, ProblemList &p
         }
 
         foreach (const QString &missedFile, missedFiles) {
-            problemList.append(Problem(ClarkClassifyPrompter::tr("The mandatory database file doesn't exist: %1.").arg(missedFile), actor->getId()));
+            notificationList.append(WorkflowNotification(ClarkClassifyPrompter::tr("The mandatory database file doesn't exist: %1.").arg(missedFile), actor->getId()));
         }
         CHECK(missedFiles.isEmpty(), false);
     }
@@ -537,7 +537,7 @@ TaxonomyClassificationResult ClarkClassifyWorker::parseReport(const QString &url
                 }
                 if (result.contains(objID)) {
                     QString msg = tr("Duplicate sequence name '%1' have been detected in the classification output.").arg(objID);
-                    monitor()->addInfo(msg, getActorId(), Problem::U2_WARNING);
+                    monitor()->addInfo(msg, getActorId(), WorkflowNotification::U2_WARNING);
                     algoLog.info(msg);
                 } else {
                     result[objID] = assID;

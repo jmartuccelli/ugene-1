@@ -38,7 +38,7 @@ DbiDataHandler::DbiDataHandler(const U2EntityRef &entRef, U2ObjectDbi *dbi, bool
 DbiDataHandler::~DbiDataHandler() {
     if (useGC) {
         U2OpStatusImpl os;
-        // TODO: removing is forbidden because of performance problems
+        // TODO: removing is forbidden because of performance notifications
         //dbi->removeObject(id, os);
         // TODO: how do you want to check @os???
     }

@@ -29,7 +29,7 @@ HEADERS += src/BreakpointHitCountDialog.h \
            src/dashboard/ExternalToolsWidget.h \
            src/dashboard/OutputFilesWidget.h \
            src/dashboard/ParametersWidget.h \
-           src/dashboard/ProblemsWidget.h \
+           src/dashboard/NotificationsWidget.h \
            src/dashboard/ResourcesWidget.h \
            src/dashboard/StatisticsWidget.h \
            src/dashboard/TableWidget.h \
@@ -96,7 +96,7 @@ SOURCES += src/BreakpointHitCountDialog.cpp \
            src/dashboard/ExternalToolsWidget.cpp \
            src/dashboard/OutputFilesWidget.cpp \
            src/dashboard/ParametersWidget.cpp \
-           src/dashboard/ProblemsWidget.cpp \
+           src/dashboard/NotificationsWidget.cpp \
            src/dashboard/ResourcesWidget.cpp \
            src/dashboard/StatisticsWidget.cpp \
            src/dashboard/TableWidget.cpp \

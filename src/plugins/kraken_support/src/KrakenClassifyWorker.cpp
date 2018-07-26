@@ -209,7 +209,7 @@ TaxonomyClassificationResult KrakenClassifyWorker::parseReport(const QString &ur
                     if (ok) {
                         if (result.contains(objID)) {
                             QString msg = tr("Duplicate sequence name '%1' have been detected in the classification output.").arg(objID);
-                            monitor()->addInfo(msg, getActorId(), Problem::U2_WARNING);
+                            monitor()->addInfo(msg, getActorId(), WorkflowNotification::U2_WARNING);
                             algoLog.info(msg);
                         } else {
                             result[objID] = assID;

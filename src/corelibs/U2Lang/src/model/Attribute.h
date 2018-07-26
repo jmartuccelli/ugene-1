@@ -157,7 +157,7 @@ public:
      */
     virtual void updateActorIds(const QMap<ActorId, ActorId> &actorIdsMap);
 
-    virtual bool validate(ProblemList &problemList);
+    virtual bool validate(NotificationsList &notificationList);
 
 private:
     void debugCheckAttributeId() const;
