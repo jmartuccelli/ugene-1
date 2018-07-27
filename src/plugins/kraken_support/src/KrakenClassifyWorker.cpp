@@ -133,9 +133,20 @@ void KrakenClassifyWorker::sl_taskFinished(Task *task) {
     const QString rawClassificationUrl = krakenTask->getClassificationUrl();
 
     QVariantMap data;
-    data[TaxonomySupport::TAXONOMY_CLASSIFICATION_SLOT_ID] = QVariant::fromValue<U2::LocalWorkflow::TaxonomyClassificationResult>(parseReport(rawClassificationUrl));
+    TaxonomyClassificationResult classificationResult = parseReport(rawClassificationUrl);
+    data[TaxonomySupport::TAXONOMY_CLASSIFICATION_SLOT_ID] = QVariant::fromValue<U2::LocalWorkflow::TaxonomyClassificationResult>(classificationResult);
     output->put(Message(output->getBusType(), data));
     context->getMonitor()->addOutputFile(rawClassificationUrl, getActor()->getId());
+
+    LocalWorkflow::TaxonomyClassificationResult::const_iterator it;
+    int classifiedCount = 0;
+    for (it = classificationResult.constBegin(); it != classificationResult.constEnd(); ++it) {
+        if(it.value() != TaxonomyTree::UNCLASSIFIED_ID) {
+            classifiedCount++;
+        }
+    }
+    context->getMonitor()->addInfo(tr("There were %1 input reads, %2 reads were classified.").arg(QString::number(classificationResult.size())).arg(QString::number(classifiedCount))
+                                    , getActor()->getId(), WorkflowNotification::U2_INFO);
 }
 
 bool KrakenClassifyWorker::isReadyToRun() const {

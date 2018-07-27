@@ -168,7 +168,7 @@ void Dashboard::sl_loaded(bool ok) {
 
         sl_runStateChanged(false);
         if (!monitor()->getNotifications().isEmpty()) {
-            sl_addProblemsWidget();
+            sl_addNotificationsWidget();
         }
 
         new ParametersWidget(addWidget(tr("Parameters"), InputDashTab, 0), this);
@@ -178,7 +178,7 @@ void Dashboard::sl_loaded(bool ok) {
         createExternalToolTab();
 
         connect(monitor(), SIGNAL(si_runStateChanged(bool)), SLOT(sl_runStateChanged(bool)));
-        connect(monitor(), SIGNAL(si_firstProblem()), SLOT(sl_addProblemsWidget()));
+        connect(monitor(), SIGNAL(si_firstNotification()), SLOT(sl_addNotificationsWidget()));
     }
 
     if (!WorkflowSettings::isShowLoadButtonHint()) {
@@ -186,7 +186,7 @@ void Dashboard::sl_loaded(bool ok) {
     }
 }
 
-void Dashboard::sl_addProblemsWidget() {
+void Dashboard::sl_addNotificationsWidget() {
     // Will be removed by parent
     new NotificationsWidget(addWidget(tr("Notifications"), OverviewDashTab), this);
 }
