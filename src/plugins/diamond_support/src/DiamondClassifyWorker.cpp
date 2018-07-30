@@ -100,12 +100,7 @@ void DiamondClassifyWorker::sl_taskFinished(Task *task) {
     context->getMonitor()->addOutputFile(classificationUrl, getActor()->getId());
 
     LocalWorkflow::TaxonomyClassificationResult::const_iterator it;
-    int classifiedCount = 0;
-    for (it = classificationResult.constBegin(); it != classificationResult.constEnd(); ++it) {
-        if(it.value() != TaxonomyTree::UNCLASSIFIED_ID) {
-            classifiedCount++;
-        }
-    }
+    int classifiedCount = NgsReadsClassificationUtils::countClassified(classificationResult);
     context->getMonitor()->addInfo(tr("There were %1 input reads, %2 reads were classified.").arg(QString::number(classificationResult.size())).arg(QString::number(classifiedCount))
                                     , getActor()->getId(), WorkflowNotification::U2_INFO);
 }
