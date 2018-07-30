@@ -32,11 +32,11 @@ QString NgsReadsClassificationUtils::getClassificationFileName(const QString &so
     return baseName + QString("_%1_classification.%2").arg(toolName).arg(extension);
 }
 
-int NgsReadsClassificationUtils::countClassified(const TaxonomyClassificationResult& classification) {
+int NgsReadsClassificationUtils::countClassified(const LocalWorkflow::TaxonomyClassificationResult& classification) {
     LocalWorkflow::TaxonomyClassificationResult::const_iterator it;
     int classifiedCount = 0;
     for (it = classification.constBegin(); it != classification.constEnd(); ++it) {
-        if(it.value() != TaxonomyTree::UNCLASSIFIED_ID && it.value() != TaxonomyTree::UNDEFINED_ID) {
+        if (it.value() != LocalWorkflow::TaxonomyTree::UNCLASSIFIED_ID && it.value() != LocalWorkflow::TaxonomyTree::UNDEFINED_ID) {
             classifiedCount++;
         }
     }

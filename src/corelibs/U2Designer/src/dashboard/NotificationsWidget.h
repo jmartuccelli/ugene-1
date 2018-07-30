@@ -19,8 +19,8 @@
  * MA 02110-1301, USA.
  */
 
-#ifndef _U2_PROBLEMSWIDGET_H_
-#define _U2_PROBLEMSWIDGET_H_
+#ifndef _U2_NOTIFICATIONSWIDGET_H_
+#define _U2_NOTIFICATIONSWIDGET_H_
 
 #include "TableWidget.h"
 
@@ -42,7 +42,7 @@ public:
     static const QString ID;
 
 private slots:
-    void sl_newProblem(const WorkflowNotification &info);
+    void sl_newNotification(const WorkflowNotification &info);
 
 protected:
     QString createRow(const QStringList &d);

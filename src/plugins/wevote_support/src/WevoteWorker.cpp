@@ -30,6 +30,7 @@
 #include <U2Lang/BaseSlots.h>
 #include <U2Lang/WorkflowMonitor.h>
 
+#include "../ngs_reads_classification/src/NgsReadsClassificationUtils.h"
 #include "WevoteWorker.h"
 #include "WevoteWorkerFactory.h"
 

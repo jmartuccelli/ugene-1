@@ -32,13 +32,13 @@ NotificationsWidget::NotificationsWidget(const QWebElement &content, Dashboard *
 {
     createTable();
     foreach (const WorkflowNotification &info, dashboard->monitor()->getNotifications()) {
-        sl_newProblem(info);
+        sl_newNotification(info);
     }
-    connect(dashboard->monitor(), SIGNAL(si_newProblem(const WorkflowNotification &)),
-        SLOT(sl_newProblem(const WorkflowNotification &)));
+    connect(dashboard->monitor(), SIGNAL(si_newNotification(const WorkflowNotification &)),
+        SLOT(sl_newNotification(const WorkflowNotification &)));
 }
 
-void NotificationsWidget::sl_newProblem(const WorkflowNotification &info) {
+void NotificationsWidget::sl_newNotification(const WorkflowNotification &info) {
     const WorkflowMonitor *m = dashboard->monitor();
     CHECK(NULL != m, );
     if (rows.contains(id(info))) {
