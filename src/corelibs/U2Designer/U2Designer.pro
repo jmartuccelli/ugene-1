@@ -27,7 +27,7 @@ HEADERS += src/BreakpointHitCountDialog.h \
            src/WorkflowGUIUtils.h \
            src/dashboard/Dashboard.h \
            src/dashboard/ExternalToolsWidget.h \
-		   src/dashboard/NotificationsWidget.h \
+           src/dashboard/NotificationsWidget.h \
            src/dashboard/OutputFilesWidget.h \
            src/dashboard/ParametersWidget.h \
            src/dashboard/ResourcesWidget.h \
@@ -94,7 +94,7 @@ SOURCES += src/BreakpointHitCountDialog.cpp \
            src/WorkflowGUIUtils.cpp \
            src/dashboard/Dashboard.cpp \
            src/dashboard/ExternalToolsWidget.cpp \
-		   src/dashboard/NotificationsWidget.cpp \
+           src/dashboard/NotificationsWidget.cpp \
            src/dashboard/OutputFilesWidget.cpp \
            src/dashboard/ParametersWidget.cpp \
            src/dashboard/ResourcesWidget.cpp \

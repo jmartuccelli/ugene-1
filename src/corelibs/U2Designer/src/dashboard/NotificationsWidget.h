@@ -19,8 +19,8 @@
  * MA 02110-1301, USA.
  */
 
-#ifndef _U2_NOTIFICATIONSWIDGET_H_
-#define _U2_NOTIFICATIONSWIDGET_H_
+#ifndef _U2_NOTIFICATIONS_WIDGET_H_
+#define _U2_NOTIFICATIONS_WIDGET_H_
 
 #include "TableWidget.h"
 
@@ -57,4 +57,4 @@ private:
 
 } // U2
 
-#endif // _U2_PROBLEMSWIDGET_H_
+#endif // _U2_NOTIFICATIONS_WIDGET_H_

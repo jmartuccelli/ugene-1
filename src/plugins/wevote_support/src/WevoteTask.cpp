@@ -132,6 +132,7 @@ void WevoteTask::parseClassification() {
 
     TabulatedFormatReader reader(stateInfo, ioAdapter.data());
     if (settings.inputFileUrl.endsWith(".csv")) {
+        //skip header
         reader.getNextLine();
     }
     while (reader.hasNextLine()) {
